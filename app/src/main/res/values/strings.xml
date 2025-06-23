@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">CuriosityApp</string>
+    <string name="navbar_title">Navbar</string>
+    <string name="footer_def">Footer</string>
+    <string name="AccediLabel">Accedi</string>
+    <string name="RegistratiLabel">Registrati</string>
+    <string name="no_image">placeholder</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_base"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background_base"
+    android:gravity="center|top"
+    android:orientation="vertical"
+    android:paddingTop="50dp">
+
+    <ImageView
+        android:id="@+id/logo1"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:layout_margin="25dp"
+        android:contentDescription="@string/no_image"
+        android:maxHeight="150dp"
+        android:src="@drawable/logo" />
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/LoginLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:clickable="true"
+                android:enabled="false"
+                android:focusable="true"
+                android:paddingHorizontal="8dp"
+                android:text="@string/AccediLabel"
+                android:textColor="@color/text_disable"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/SignUpLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingHorizontal="8dp"
+                android:text="@string/RegistratiLabel"
+                android:textColor="@color/text_color"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/login_signup_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="275dp">
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/logo2"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="25dp"
+        android:contentDescription="@string/no_image"
+        android:maxHeight="170dp"
+        android:src="@drawable/curiositylogo" />
+
+</LinearLayout>
+
