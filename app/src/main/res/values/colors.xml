@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="background_base">#DBE9EE</color>
+    <color name="background_outline">#AFBABE</color>
     <color name="text_color">#221d23</color>
     <color name="text_disable">#61221D23</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+    <color name="button_outline">#ABAFAF</color>
+    <color name="confirmationColor">#33BA37</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="errorColor">#E53935</color>
 </resources>

@@ -1,36 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="24dp"
+    android:layout_height="match_parent"
+    android:background="#DBE9EE"
     android:gravity="center_horizontal"
-    android:background="#DBE9EE">
+    android:orientation="vertical"
+    android:padding="5dp">
 
+    <!-- Esempio di input -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login Fragment"
-        android:textSize="20sp"
-        android:textColor="#221D23"
-        android:layout_marginBottom="16dp"/>
+        android:layout_gravity="center"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="@font/agbalumo"
+        android:text="@string/welcome"
+        android:textColor="@color/black"
+        android:textSize="48sp" />
 
-    <!-- Esempio di input -->
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email" />
+        android:layout_gravity="start"
+        android:text="@string/insertemail"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
 
     <EditText
+        android:id="@+id/email_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:layout_marginTop="8dp"/>
+        android:autofillHints="emailAddress"
+        android:hint="@string/emailLabel"
+        android:inputType="textEmailAddress" />
 
-    <Button
+    <TextView
+        android:id="@+id/infLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Accedi"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="8dp"
+        android:textColor="@color/errorColor" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/AccediLabel" />
+
 </LinearLayout>

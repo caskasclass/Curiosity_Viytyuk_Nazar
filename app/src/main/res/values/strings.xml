@@ -5,6 +5,13 @@
     <string name="AccediLabel">Accedi</string>
     <string name="RegistratiLabel">Registrati</string>
     <string name="no_image">placeholder</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="emailLabel">Email</string>
+    <string name="passwordLabel">Password</string>
+    <string name="AvatarLabel">Avatar</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="carica_holder">Carica</string>
+    <string name="username_label">Username</string>
+    <string name="repeat_psw">Conferma la password</string>
+    <string name="insertemail">Inserisci la tua mail per accedere</string>
+    <string name="welcome">Hei Ciao</string>
 </resources>

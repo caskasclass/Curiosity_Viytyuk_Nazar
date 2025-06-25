@@ -16,8 +16,8 @@ class AccediRegistratiActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.accedi_registrati)
 
-        loginButton = findViewById<TextView>(R.id.LoginLabel)
-        sighUpButton = findViewById<TextView>(R.id.SignUpLabel)
+        loginButton = findViewById(R.id.LoginLabel)
+        sighUpButton = findViewById(R.id.SignUpLabel)
         loadFragment(LoginFragment())
 
         loginButton.setOnClickListener{
@@ -33,7 +33,7 @@ class AccediRegistratiActivity : AppCompatActivity() {
 
     private fun loadFragment(fragment: Fragment){
         supportFragmentManager.beginTransaction()
-            .replace(R.id.login_signup_fragment, fragment)
+            .replace(R.id.login_signup_layout, fragment)
             .commit()
     }
 

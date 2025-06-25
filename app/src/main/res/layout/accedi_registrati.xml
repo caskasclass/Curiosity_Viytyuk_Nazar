@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root_base"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@color/background_base"
     android:gravity="center|top"
     android:orientation="vertical"
@@ -11,9 +11,12 @@
 
     <ImageView
         android:id="@+id/logo1"
-        android:layout_width="300dp"
-        android:layout_height="150dp"
-        android:layout_margin="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="50dp"
         android:contentDescription="@string/no_image"
         android:maxHeight="150dp"
         android:src="@drawable/logo" />
@@ -26,7 +29,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="end"
+            android:gravity="center_horizontal"
             android:orientation="horizontal">
 
             <TextView
@@ -40,7 +43,8 @@
                 android:paddingHorizontal="8dp"
                 android:text="@string/AccediLabel"
                 android:textColor="@color/text_disable"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <TextView
                 android:id="@+id/SignUpLabel"
@@ -52,28 +56,34 @@
                 android:paddingHorizontal="8dp"
                 android:text="@string/RegistratiLabel"
                 android:textColor="@color/text_color"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                tools:ignore="TouchTargetSizeCheck" />
 
         </LinearLayout>
 
-        <FrameLayout
-            android:id="@+id/login_signup_fragment"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/login_signup_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="275dp">
+            android:layout_height="match_parent"
+            android:minHeight="175dp"
+            android:paddingStart="15dp"
+            android:paddingTop="50dp"
+            android:paddingEnd="15dp"
+            android:paddingBottom="25dp">
 
-        </FrameLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 
     <ImageView
         android:id="@+id/logo2"
-        android:layout_width="350dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="25dp"
         android:contentDescription="@string/no_image"
-        android:maxHeight="170dp"
-        android:src="@drawable/curiositylogo" />
+        android:maxHeight="150dp"
+        android:paddingBottom="10dp"
+        android:src="@drawable/prova"
+        tools:ignore="ImageContrastCheck" />
 
 </LinearLayout>
 
