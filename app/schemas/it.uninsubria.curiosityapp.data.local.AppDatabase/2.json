@@ -1,0 +1,139 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 2,
+    "identityHash": "de911683c0c98fb06f681b15512f4541",
+    "entities": [
+      {
+        "tableName": "users",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`email` TEXT NOT NULL, `username` TEXT NOT NULL, `profilePicturePath` TEXT, `sliderPreference` REAL, PRIMARY KEY(`email`))",
+        "fields": [
+          {
+            "fieldPath": "email",
+            "columnName": "email",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "username",
+            "columnName": "username",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "profilePicturePath",
+            "columnName": "profilePicturePath",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "sliderPreference",
+            "columnName": "sliderPreference",
+            "affinity": "REAL"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "email"
+          ]
+        }
+      },
+      {
+        "tableName": "interessi",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`nome` TEXT NOT NULL, PRIMARY KEY(`nome`))",
+        "fields": [
+          {
+            "fieldPath": "nome",
+            "columnName": "nome",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "nome"
+          ]
+        }
+      },
+      {
+        "tableName": "interesseUtente",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `userEmail` TEXT NOT NULL, `interesseNome` TEXT NOT NULL, FOREIGN KEY(`userEmail`) REFERENCES `users`(`email`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`interesseNome`) REFERENCES `interessi`(`nome`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "userEmail",
+            "columnName": "userEmail",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "interesseNome",
+            "columnName": "interesseNome",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_interesseUtente_userEmail",
+            "unique": false,
+            "columnNames": [
+              "userEmail"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_interesseUtente_userEmail` ON `${TABLE_NAME}` (`userEmail`)"
+          },
+          {
+            "name": "index_interesseUtente_interesseNome",
+            "unique": false,
+            "columnNames": [
+              "interesseNome"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_interesseUtente_interesseNome` ON `${TABLE_NAME}` (`interesseNome`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "users",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "userEmail"
+            ],
+            "referencedColumns": [
+              "email"
+            ]
+          },
+          {
+            "table": "interessi",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "interesseNome"
+            ],
+            "referencedColumns": [
+              "nome"
+            ]
+          }
+        ]
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'de911683c0c98fb06f681b15512f4541')"
+    ]
+  }
+}

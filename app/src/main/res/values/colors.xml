@@ -8,4 +8,10 @@
     <color name="confirmationColor">#33BA37</color>
     <color name="black">#FF000000</color>
     <color name="errorColor">#E53935</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white_outline">#c2c2c2</color>
+    <color name="progressSlider">#99B1FF</color>
+    <color name="thumbColor">#3363FF</color>
+    <color name="selector_selected">#8A84E2</color>
+
 </resources>

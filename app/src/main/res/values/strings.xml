@@ -14,4 +14,9 @@
     <string name="repeat_psw">Conferma la password</string>
     <string name="insertemail">Inserisci la tua mail per accedere</string>
     <string name="welcome">Hei Ciao</string>
+    <string name="select_interest">Scegli una o più aree di interesse</string>
+    <string name="save">Conferma</string>
+    <string name="selectTimeSpan">Ogni quanto vuoi ricevere le notifiche? </string>
+    <string name="selettore_di_orario_dalle_3_alle_6">Selettore di orario dalle 3 alle 6</string>
+    <string name="next_page">next_page</string>
 </resources>

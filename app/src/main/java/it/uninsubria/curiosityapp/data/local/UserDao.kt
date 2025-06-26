@@ -10,4 +10,8 @@ interface UserDao {
 
     @Query("SELECT * FROM users WHERE email = :email LIMIT 1")
     suspend fun getUserByEmail(email: String): User?
+
+    @Query("UPDATE users SET sliderPreference = :value WHERE email = :email")
+    suspend fun updateSliderPreference(email: String, value: Float)
+
 }

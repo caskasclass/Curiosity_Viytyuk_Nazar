@@ -7,5 +7,6 @@ import androidx.room.PrimaryKey
 data class User(
     @PrimaryKey val email: String,
     val username: String,
-    val profilePicturePath: String? = null // path locale del file immagine
+    val profilePicturePath: String? = null,
+    val sliderPreference: Float? = null
 )

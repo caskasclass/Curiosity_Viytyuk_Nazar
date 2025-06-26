@@ -12,7 +12,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import it.uninsubria.curiosityapp.R
 import it.uninsubria.curiosityapp.data.local.DatabaseProvider
-import it.uninsubria.curiosityapp.ui.activities.HomePageActivity
+import it.uninsubria.curiosityapp.data.session.SessionManager
+import it.uninsubria.curiosityapp.ui.activities.InitializationPageActivity
 import kotlinx.coroutines.launch
 
 class LoginFragment : Fragment() {
@@ -20,6 +21,7 @@ class LoginFragment : Fragment() {
     private lateinit var emailVar: TextView
     private lateinit var loginButtonVar: Button
     private lateinit var infLabel :TextView
+    private lateinit var session: SessionManager
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -55,7 +57,9 @@ class LoginFragment : Fragment() {
                     infLabel.text = "Utente non registrato"
                 } else {
                     infLabel.text = ""
-                    openHomeActivity()
+                    session = SessionManager(requireContext())
+                    session.saveUserEmail(user.email)
+                    openInitializationActivity()
                 }
             }
 
@@ -64,15 +68,15 @@ class LoginFragment : Fragment() {
         return view
 
     }
-    // Funzione di validazione email
+
     private fun isEmailValid(email: String): Boolean {
         val emailRegex = Regex("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$")
         return emailRegex.matches(email)
     }
-    // Funzione per aprire nuova Activity
-    private fun openHomeActivity() {
-        val intent = Intent(requireContext(), HomePageActivity::class.java)
+
+    private fun openInitializationActivity() {
+        val intent = Intent(requireContext(), InitializationPageActivity::class.java)
         startActivity(intent)
-        requireActivity().finish()  // Se vuoi chiudere il fragment/activity attuale
+        requireActivity().finish()
     }
 }

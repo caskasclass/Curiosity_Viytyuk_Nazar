@@ -4,7 +4,7 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2025-06-23T14:04:25.416630Z">
+        <DropdownSelection timestamp="2025-06-26T06:12:16.056976Z">
           <Target type="DEFAULT_BOOT">
             <handle>
               <DeviceId pluginId="LocalEmulator" identifier="path=/Users/casca/.android/avd/Medium_Phone.avd" />
