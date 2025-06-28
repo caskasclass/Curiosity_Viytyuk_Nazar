@@ -20,6 +20,8 @@ import java.io.FileOutputStream
 import androidx.lifecycle.lifecycleScope
 import it.uninsubria.curiosityapp.data.local.DatabaseProvider
 import it.uninsubria.curiosityapp.data.model.User
+import it.uninsubria.curiosityapp.utils.isEmailValid
+import it.uninsubria.curiosityapp.utils.isUsernameValid
 import kotlinx.coroutines.launch
 
 
@@ -71,16 +73,10 @@ class SignUpFragment : Fragment() {
                 errorusernameLabel.text ="Minimo 2 char, max 24 char"
                 return@setOnClickListener
             }
-
             lifecycleScope.launch {
                 registerUser(email, username, selectedProfileImageUri)
-
             }
         }
-
-
-
-
         return view
     }
 
@@ -128,15 +124,7 @@ class SignUpFragment : Fragment() {
 
         return true
     }
-    private fun isEmailValid(email: String): Boolean {
-        val emailRegex = Regex("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$")
-        return emailRegex.matches(email)
-    }
 
-    private fun isUsernameValid(username: String): Boolean {
-        val usernameRegex = Regex("^[a-zA-Z0-9_]{3,24}$")
-        return usernameRegex.matches(username)
-    }
 
 
 }

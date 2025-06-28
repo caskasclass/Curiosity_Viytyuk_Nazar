@@ -33,9 +33,8 @@ class InterestsCollectionFragment :Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view =  inflater.inflate(R.layout.fragment_interestscollection, container, false)
         session = SessionManager(requireContext())
-        return  view
+        return  inflater.inflate(R.layout.fragment_interestscollection, container, false)
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -46,63 +45,58 @@ class InterestsCollectionFragment :Fragment() {
 
         lifecycleScope.launch {
             val db = DatabaseProvider.getDatabase(requireContext())
-            val interests = db.interesseDao().getAllInteressi()
-            Log.d("TAG","Numero di interests : "+interests.size.toString())
+            val allInterests = db.interesseDao().getAllInteressi()
+            val email = session.getUserEmail()
 
-            for (interesse in interests) {
+            val userInterests = if(email!=null){
+                db.interesseUtenteDao().getInteressiByUser(email)
+            }else emptyList()
+
+            Log.d("TAG","Numero di interests : "+allInterests.size.toString())
+
+            for (interesse in allInterests) {
                 val chip = Chip(requireContext()).apply {
-
                     layoutParams = ViewGroup.LayoutParams(
                         ViewGroup.LayoutParams.WRAP_CONTENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT
                     )
-
                     text = interesse.nome
-
                     setTextSize(TypedValue.COMPLEX_UNIT_SP, 18f)
                     val colorStateList = ContextCompat.getColorStateList(requireContext(), R.color.colorstatelist)
                     chipBackgroundColor =colorStateList
-
                     chipStrokeWidth = TypedValue.applyDimension(
                         TypedValue.COMPLEX_UNIT_DIP,
                         1f,
                         resources.displayMetrics
                     )
                     chipStrokeColor = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.white_outline))
-
                     val radius = TypedValue.applyDimension(
                         TypedValue.COMPLEX_UNIT_DIP,
                         20f,
                         resources.displayMetrics
                     )
-
                     val shapeModel = ShapeAppearanceModel.Builder()
                         .setAllCornerSizes(radius)
                         .build()
-
                     shapeAppearanceModel = shapeModel
-
                     chipStartPadding = TypedValue.applyDimension(
                         TypedValue.COMPLEX_UNIT_DIP,
                         10f,
                         resources.displayMetrics
                     )
-
                     chipEndPadding = TypedValue.applyDimension(
                         TypedValue.COMPLEX_UNIT_DIP,
                         10f,
                         resources.displayMetrics
                     )
-
                     minHeight = TypedValue.applyDimension(
                         TypedValue.COMPLEX_UNIT_DIP,
                         60f,
                         resources.displayMetrics
                     ).toInt()
-
                     isCheckedIconVisible = false
-                    // Checkable
                     isCheckable = true
+                    isChecked = userInterests.contains(interesse.nome)
                     setOnCheckedChangeListener { buttonView, isChecked ->
                         if (isChecked) {
                             selectedInterests.add(buttonView.text.toString())
@@ -113,17 +107,28 @@ class InterestsCollectionFragment :Fragment() {
                     }
                 }
                 chipGroup.addView(chip)
+                if (userInterests.contains(interesse.nome)) {
+                    selectedInterests.add(interesse.nome)
+                }
             }
+            saveButton.isEnabled = selectedInterests.size >= 3
         }
+
+
+
         saveButton.setOnClickListener{
             lifecycleScope.launch {
                 val db = DatabaseProvider.getDatabase(requireContext())
+                val email = session.getUserEmail() ?: return@launch // se null esco
 
-                selectedInterests.forEach { interesseNome ->
-                    db.interesseUtenteDao().addInteresseUtente(
-                        InteresseUtente(userEmail = session.getUserEmail().toString(), interesseNome = interesseNome)
-                    )
+
+                db.interesseUtenteDao().deleteInteressiByUser(email)
+
+                val nuoviInteressi = selectedInterests.map { interesseNome ->
+                    InteresseUtente(userEmail = email, interesseNome = interesseNome)
                 }
+
+                db.interesseUtenteDao().addInteressiUtente(nuoviInteressi)
 
                 parentFragmentManager.beginTransaction()
                     .replace(R.id.interests_layout,TimeSpanFragment())

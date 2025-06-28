@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "de911683c0c98fb06f681b15512f4541",
+    "identityHash": "2a694805e37a66cc3e65fac3b26d97ed",
     "entities": [
       {
         "tableName": "users",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`email` TEXT NOT NULL, `username` TEXT NOT NULL, `profilePicturePath` TEXT, `sliderPreference` REAL, PRIMARY KEY(`email`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`email` TEXT NOT NULL, `username` TEXT NOT NULL, `profilePicturePath` TEXT, `sliderPreference` REAL, `knewCount` INTEGER NOT NULL, `didntKnowCount` INTEGER NOT NULL, PRIMARY KEY(`email`))",
         "fields": [
           {
             "fieldPath": "email",
@@ -29,6 +29,18 @@
             "fieldPath": "sliderPreference",
             "columnName": "sliderPreference",
             "affinity": "REAL"
+          },
+          {
+            "fieldPath": "knewCount",
+            "columnName": "knewCount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "didntKnowCount",
+            "columnName": "didntKnowCount",
+            "affinity": "INTEGER",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -133,7 +145,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'de911683c0c98fb06f681b15512f4541')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2a694805e37a66cc3e65fac3b26d97ed')"
     ]
   }
 }

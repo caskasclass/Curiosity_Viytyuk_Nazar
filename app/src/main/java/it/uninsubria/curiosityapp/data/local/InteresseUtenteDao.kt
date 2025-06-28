@@ -9,12 +9,14 @@ import it.uninsubria.curiosityapp.data.model.InteresseUtente
 
 @Dao
 interface InteresseUtenteDao {
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addInteresseUtente(interesseUtente: InteresseUtente)
 
-    @Query("SELECT interesseNome FROM interesseutente WHERE userEmail = :email")
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun addInteressiUtente(interessi: List<InteresseUtente>)
+
+    @Query("SELECT interesseNome FROM interesseUtente WHERE userEmail = :email")
     suspend fun getInteressiByUser(email: String): List<String>
 
-    @Delete
-    suspend fun removeInteresseUtente(interesseUtente: InteresseUtente)
+    @Query("DELETE FROM interesseUtente WHERE userEmail = :email")
+    suspend fun deleteInteressiByUser(email: String)
+
 }

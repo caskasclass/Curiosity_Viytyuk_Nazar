@@ -19,4 +19,11 @@
     <string name="selectTimeSpan">Ogni quanto vuoi ricevere le notifiche? </string>
     <string name="selettore_di_orario_dalle_3_alle_6">Selettore di orario dalle 3 alle 6</string>
     <string name="next_page">next_page</string>
+    <string name="Hello_user_placeholder">Ciao User</string>
+    <string name="settings_button">settings_button</string>
+    <string name="logout_button">logout_button</string>
+    <string name="categoria">Categoria</string>
+    <string name="description_placeholder">Lo sapevi che...</string>
+    <string name="lo_sapevo">Lo sapevo</string>
+    <string name="non_lo_sapevo">Non lo sapevo</string>
 </resources>

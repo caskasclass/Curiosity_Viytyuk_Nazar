@@ -1,3 +1,5 @@
 package it.uninsubria.curiosityapp.data.network
 
-data class UnsplashPhoto()
+data class UnsplashPhoto(
+    val urls: Urls
+)

@@ -1,4 +1,7 @@
 package it.uninsubria.curiosityapp.data.model
 
-class CuriosityFact {
-}
+data class CuriosityFact(
+    val testo: String,
+    val categoria: String,
+    val immagineUrl: String
+)

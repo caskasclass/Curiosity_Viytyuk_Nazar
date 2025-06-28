@@ -14,6 +14,7 @@ import it.uninsubria.curiosityapp.R
 import it.uninsubria.curiosityapp.data.local.DatabaseProvider
 import it.uninsubria.curiosityapp.data.session.SessionManager
 import it.uninsubria.curiosityapp.ui.activities.InitializationPageActivity
+import it.uninsubria.curiosityapp.utils.isEmailValid
 import kotlinx.coroutines.launch
 
 class LoginFragment : Fragment() {
@@ -52,13 +53,16 @@ class LoginFragment : Fragment() {
 
             lifecycleScope.launch {
                 val db = DatabaseProvider.getDatabase(requireContext())
+
                 val user = db.userDao().getUserByEmail(emailInput)
                 if (user == null) {
                     infLabel.text = "Utente non registrato"
                 } else {
                     infLabel.text = ""
                     session = SessionManager(requireContext())
+                    session.saveSliderValue(user.sliderPreference ?: 3f)
                     session.saveUserEmail(user.email)
+                    session.setLogin(true)
                     openInitializationActivity()
                 }
             }
@@ -69,10 +73,6 @@ class LoginFragment : Fragment() {
 
     }
 
-    private fun isEmailValid(email: String): Boolean {
-        val emailRegex = Regex("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$")
-        return emailRegex.matches(email)
-    }
 
     private fun openInitializationActivity() {
         val intent = Intent(requireContext(), InitializationPageActivity::class.java)

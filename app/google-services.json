@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "95114330711",
+    "project_id": "curiosityapp-74680",
+    "storage_bucket": "curiosityapp-74680.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:95114330711:android:763a0dd92f47bb00d6d912",
+        "android_client_info": {
+          "package_name": "it.uninsubria.curiosityapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdxmqg4iGkm8xEit-Ogbl-OVfNmMXF5xo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

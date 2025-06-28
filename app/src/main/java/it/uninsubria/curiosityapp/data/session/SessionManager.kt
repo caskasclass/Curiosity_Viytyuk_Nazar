@@ -10,6 +10,7 @@ class SessionManager(context: Context) {
 
     companion object {
         private const val KEY_USER_EMAIL = "user_email"
+        private const val KEY_IS_LOGGED_IN = "is_logged_in"
     }
 
     fun saveUserEmail(email: String) {
@@ -25,7 +26,14 @@ class SessionManager(context: Context) {
     }
 
     fun getSliderValue(): Float {
-        return prefs.getFloat("ore_scelte", 4f)
+        return prefs.getFloat("ore_scelte", 3f)
+    }
+    fun setLogin(isLoggedIn: Boolean) {
+        prefs.edit().putBoolean(KEY_IS_LOGGED_IN, isLoggedIn).apply()
+    }
+
+    fun isLoggedIn(): Boolean {
+        return prefs.getBoolean(KEY_IS_LOGGED_IN, false)
     }
     fun clearSession() {
         prefs.edit().clear().apply()

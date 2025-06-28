@@ -1,3 +1,5 @@
 package it.uninsubria.curiosityapp.data.network
 
-data class Urls()
+data class Urls(
+    val regular: String
+)

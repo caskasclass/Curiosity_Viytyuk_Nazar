@@ -1,7 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:orientation="vertical"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_base"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/no_background"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <!-- Carta della curiosità -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/curiosityCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+
+            app:cardBackgroundColor="@color/selector_selected"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            app:cardUseCompatPadding="true"
+            app:contentPadding="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:gravity="start"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <!-- Immagine -->
+
+                <!-- Categoria -->
+
+                <ImageView
+                    android:id="@+id/curiosityImage"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/categoria"
+                    android:maxHeight="250dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_launcher_background" />
+
+                <TextView
+                    android:id="@+id/curiosityCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/categoria"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/curiosityText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:breakStrategy="simple"
+                    android:ellipsize="end"
+                    android:lineSpacingExtra="2dp"
+                    android:maxLines="10"
+                    android:text="@string/description_placeholder"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="25dp" />
+
+
+                <!-- Contenuto curiosità -->
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Bottoni di scelta -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="true"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="8dp"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/iknow"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                android:hapticFeedbackEnabled="false"
+                android:minHeight="60dp"
+                android:text="@string/lo_sapevo" />
+
+            <Space
+                android:layout_width="20dp"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/didntknow"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                android:minHeight="60dp"
+                android:text="@string/non_lo_sapevo" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/yes"
+                style="@style/stats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="4" />
+
+            <TextView
+                android:id="@+id/tot"
+                style="@style/stats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/no"
+                style="@style/stats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="4" />
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>

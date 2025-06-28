@@ -1,7 +1,12 @@
 package it.uninsubria.curiosityapp.ui.activities
 
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -15,6 +20,16 @@ class AccediRegistratiActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.accedi_registrati)
+        // Richiesta permesso per notifiche (solo Android 13+)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            val permission = android.Manifest.permission.POST_NOTIFICATIONS
+            if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(arrayOf(permission), 1001)
+            } else {
+                // Debug (
+                Toast.makeText(this, "Permesso notifiche già concesso", Toast.LENGTH_SHORT).show()
+            }
+        }
 
         loginButton = findViewById(R.id.LoginLabel)
         sighUpButton = findViewById(R.id.SignUpLabel)
@@ -52,6 +67,19 @@ class AccediRegistratiActivity : AppCompatActivity() {
                 if (isLoginActive) R.color.text_color else R.color.text_disable
             )
         )
+    }
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == 1001) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permesso concesso
+            } else {
+                Toast.makeText(this, "Permesso notifiche necessario per usare l'app", Toast.LENGTH_LONG).show()
+                Handler(Looper.getMainLooper()).postDelayed({
+                    finishAffinity()
+                }, 2000)
+            }
+        }
     }
 
 }

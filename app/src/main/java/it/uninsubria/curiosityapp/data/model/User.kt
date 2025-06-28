@@ -8,5 +8,7 @@ data class User(
     @PrimaryKey val email: String,
     val username: String,
     val profilePicturePath: String? = null,
-    val sliderPreference: Float? = null
+    val sliderPreference: Float? = null,
+    val knewCount: Int = 0,
+    val didntKnowCount: Int = 0
 )

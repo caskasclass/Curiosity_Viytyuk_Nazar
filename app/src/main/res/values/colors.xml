@@ -13,5 +13,6 @@
     <color name="progressSlider">#99B1FF</color>
     <color name="thumbColor">#3363FF</color>
     <color name="selector_selected">#8A84E2</color>
+    <color name="no_background">#00FFFFFF</color>
 
 </resources>
